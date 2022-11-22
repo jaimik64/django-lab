@@ -1,0 +1,16 @@
+Create Module : python manage.py startapp demo_module1
+Create Project : django-admin startproject Practical3
+Run Server : python manage.py runserver
+
+1) select specific environment
+2) create project
+3) inside project directory create module 
+4) create urls.py file in created module
+5) specify urls inside urlspatterns 
+6) In project file, urls.py import craeted module's urls file
+7) In settings.py file add created module name
+8) now launch the rocket to sagar jango jango jango jango jango jango jango jango jango jango
+9) Run Server
+
+
+test : Test@123

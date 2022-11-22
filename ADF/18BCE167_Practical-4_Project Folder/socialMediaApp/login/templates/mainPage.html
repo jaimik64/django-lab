@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 3px solid #313030;
+            justify-content: space-evenly;
+        }
+        .btn{
+            height: 50px;
+            width: 100px;
+            font-size: 20px;
+        }
+    </style>
+{% endblock style %}
+
+{% block content %}
+    <br>
+        <a class="btn btn-primary" href="{% url  'signup' %}">Sign Up</a>
+        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+    </div>
+{% endblock content %}

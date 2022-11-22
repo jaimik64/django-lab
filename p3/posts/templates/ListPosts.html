@@ -1,0 +1,25 @@
+<!-- CSS only -->
+
+{% include 'index.html' %} 
+
+<div>
+    <h1> Posts </h1>
+    <a class="btn btn-primary" href="/create">Create Post</a>
+</div>
+        {% for posts in object_list %}
+        {% comment %} D:\BE\Sem-7\ADF\LAB\p3\media {% endcomment %}
+        <div class="card" style="width: 18rem; margin: 10px">
+            <img src="/be/sem-7/adf/lab/p3/media/{{posts.image.url}}" class="card-img-top" >
+            <div class="card-body">
+              <div style="display: flex; flex-direction: row">
+                <h5 class="card-title">{{posts.title}}</h5>
+              </div>
+              <p class="card-text">{{posts.description}}</p>
+              <a href="/like" class="btn btn-primary">{{posts.like}}</a>
+              <a href="/dislike" class="btn btn-primary">{{posts.dislike}}</a>
+              <a href="{% url "RemovePost" posts.id %}" class="btn btn-primary">Delete </a>
+              <a href="{% url "UpdatePost" posts.id %}" class="btn btn-primary">Update</a>
+            </div>
+          </div>
+        {% endfor %}
+    

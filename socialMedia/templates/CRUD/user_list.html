@@ -1,0 +1,24 @@
+<h1> Users </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Phone </th>
+            <th> Birthdate </th>
+            <th> Gender </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in object_list %}
+        <tr>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.birthdate}}</td>
+            <td>{{user.gender}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

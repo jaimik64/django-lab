@@ -1,0 +1,50 @@
+
+<html>
+    <head>
+        <title>Post</title> 
+    </head>
+    <body>
+        <button type="button" class="btn btn-primary" id="create">Add Post</button>
+        <button type="button" class="btn btn-primary" id="back">Back</button>
+        <button type="button" class="btn btn-primary" id="logout">Logout</button><br><br>
+    
+        
+        {% for post in posts %}
+        <br>
+        <b>{{post.username}}</b>&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-sm" id="update" onclick="update('{{post.id}}')">Update</button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" onclick="delet('{{post.id}}')">Delete</button><br>
+            Title : &nbsp;&nbsp;&nbsp;  
+            {{post.title}}<br>
+            {% if post.image %}
+                Image : &nbsp;&nbsp;&nbsp;
+                <img src="{{post.image.url}}" alt="Post Image" width="500" height="333"/><br>
+            {% endif %}
+
+            Post : &nbsp;&nbsp;&nbsp;
+            {{post.post}}<br>
+        {% endfor %}
+        </body>
+</html>
+
+<script>
+    document.getElementById('create').onclick=function(){
+        location.href="{% url 'createPost' %}"
+    };
+    document.getElementById('back').onclick=function(){
+        location.href="{% url 'displayPost' %}"
+    };
+    document.getElementById('logout').onclick=function(){
+        location.href="{% url 'logout' %}"
+    };
+</script>
+
+<script>
+    
+    function update(id){
+        window.location = "{% url 'updatePost' 1234 %}".replace(/1234/, id.toString());
+    }
+    function delet(id){
+        window.location = "{% url 'deletePost' 1234 %}".replace(/1234/, id.toString());
+    }
+</script>

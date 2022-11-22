@@ -1,0 +1,28 @@
+<h1> Contacts </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Address </th>
+            <th> Phone </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+{% for contact in object %}
+        <tr>
+            <td>{{contact.name}} </td>
+            <td>{{contact.email}} </td>
+            <td>{{contact.address}} </td>
+            <td>{{contact.phone}} </td>
+            <td>
+                <a href="{% url "contact_detail" contact.id %}">Detail </a>
+                <a href="{% url "contact_update" contact.id %}">Update </a>
+                <a href="{% url "contact_delete" contact.id %}">Delete </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

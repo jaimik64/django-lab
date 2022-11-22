@@ -1,0 +1,39 @@
+<!-- CSS only -->
+{% include 'home.html' %}
+
+<h1> Registered User </h1>
+<a href="/user/create/" class="btn btn-primary">Create User </a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>BirthDate </th>
+            <th>Gender</th>
+            <th>Edit</th>
+            <th>Delete </th>
+            <th>Detail </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for users in object_list %}
+        <tr>
+            <td>{{users.name}}</td>
+            <td>{{users.email}}</td>
+            <td>{{users.phone}}</td>
+            <td>{{users.birthdate}}</td>
+            <td>{{users.gender}}</td>
+            <td>
+                <a href="{% url "UpdateUser" users.id %}">Update</a>
+            </td>
+            <td>
+                <a href="{% url "RemoveUser" users.id %}">Delete </a>
+            </td>
+            <td>
+                <a href="{% url "UserDetail" users.id %}">Details </a>
+            </td>
+         </tr>
+        {% endfor %}
+    </tbody>
+</table>

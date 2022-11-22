@@ -1,0 +1,71 @@
+
+<html>
+    <head>
+        <title>Post</title> 
+    </head>
+    <body>
+        {% if not username%}
+            <button type="button" class="btn btn-primary" id="login">Login</button>
+            <button type="button" class="btn btn-primary" id="signup">Signup</button><br><br>
+        {% else %}
+            <button type="button" class="btn btn-primary" id="create">Add Post</button>
+            <button type="button" class="btn btn-primary" id="myPost">My Post</button><br><br>
+            <button type="button" class="btn btn-primary" id="logout">Logout</button><br><br>
+        {% endif %}
+
+        <!-- {{username}} -->
+        {% for post in posts %}
+            <br>
+            <b>{{post.username}}</b>&nbsp;&nbsp;&nbsp;
+            
+            {% ifequal post.username|stringformat:"s"  username|stringformat:"s" %}
+            
+                <button type="button" class="btn btn-primary btn-sm" id="update" onclick="update('{{post.id}}')">Update</button>
+                <button type="button" class="btn btn-primary btn-sm" id="delete" onclick="delet('{{post.id}}')">Delete</button><br>
+            {% else %}<br>
+            {% endifequal %}    
+            Title : &nbsp;&nbsp;&nbsp;  
+            {{post.title}}<br>
+            {% if post.image %}
+                Image : &nbsp;&nbsp;&nbsp;
+                <img src="{{post.image.url}}" alt="Post Image" width="500" height="333"/><br>
+            {% endif %}
+
+            Post : &nbsp;&nbsp;&nbsp;
+            {{post.post}}<br>
+        {% endfor %}
+        </body>
+</html>
+
+{% if not username %}
+    <script>
+        document.getElementById('login').onclick=function(){
+            location.href="{% url 'login' %}"
+        };
+        document.getElementById('signup').onclick=function(){
+            location.href="{% url 'signup' %}"
+        };
+    </script>
+{% else %}
+    <script>
+        document.getElementById('create').onclick=function(){
+            location.href="{% url 'createPost' %}"
+        };
+        document.getElementById('myPost').onclick=function(){
+            location.href="{% url 'myPost' %}"
+        };
+        document.getElementById('logout').onclick=function(){
+            location.href="{% url 'logout' %}"
+        };
+    </script>
+{% endif %}
+
+<script>
+    
+    function update(id){
+        window.location = "{% url 'updatePost' 1234 %}".replace(/1234/, id.toString());
+    }
+    function delet(id){
+        window.location = "{% url 'deletePost' 1234 %}".replace(/1234/, id.toString());
+    }
+</script>

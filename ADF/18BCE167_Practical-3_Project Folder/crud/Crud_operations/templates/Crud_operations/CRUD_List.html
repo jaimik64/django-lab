@@ -1,0 +1,56 @@
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    table.center {
+      margin-left: auto; 
+      margin-right: auto;
+    }
+</style>
+
+<h1>CRUD Operations</h1> <br> <button><a href="{% url 'CRUD_create' %}">Create</a></button><br>
+<br>
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Emai Id</th>
+        <th>Mobile Number</th>
+        <th>Alternate Email</th>
+        <th>Alternate Mobile Number</th>
+        <th>Father Name</th>
+        <th>Mother Name</th>
+        <th>Institute Name</th>
+        <th>Branch Name</th>
+        <th>Operations</th>
+    </thead>
+    <tbody>
+        {% for x in object_list %}
+        <tr>
+            <td>{{x.First_Name}}</td>
+            <td>{{x.Middle_Name}}</td>
+            <td>{{x.Last_Name}}</td>
+            <td>{{x.Age}}</td>
+            <td>{{x.Gender}}</td>
+            <td>{{x.Address}}</td>
+            <td>{{x.Emai_Id}}</td>
+            <td>{{x.Mobile_Number}}</td>
+            <td>{{x.Alternate_Email_Id}}</td>
+            <td>{{x.Alternate_Mobile_Number}}</td>
+            <td>{{x.Father_Name}}</td>
+            <td>{{x.Mother_Name}}</td>
+            <td>{{x.Institute_Name}}</td>
+            <td>{{x.Branch_Name}}</td>
+            <td>
+                <a href="{% url 'CRUD_detail' x.id %}">details</a>
+                <a href="{% url 'CRUD_update' x.id %}">update</a>
+                <a href="{% url 'CRUD_delete' x.id %}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

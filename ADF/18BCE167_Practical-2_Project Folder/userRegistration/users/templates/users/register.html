@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+<br><br>
+{% block content %}
+    <br>
+    <div>
+        <h3 style="text-align: center;">SignUp Page</h3>
+    </div>
+    <br><br><br>
+    {% load crispy_forms_tags %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+        <button type="submit" class="btn btn-success">Sign up</button>
+    </form>
+{% endblock content%}

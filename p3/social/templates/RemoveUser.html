@@ -1,0 +1,9 @@
+{% include 'home.html' %}
+
+<h1> Delete User </h1>
+
+<form action='' method="POST">
+    {% csrf_token %}
+    Are you sure you want to delete?
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>

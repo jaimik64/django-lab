@@ -1,0 +1,29 @@
+{% block style %}
+    <style>
+    </style>
+{% endblock style %}
+
+{% block content %}
+    <br>
+    {% if user.is_authenticated %}
+        <div style="text-align: center;">
+            <h1>Welcome {{ user.username }}!</h1>
+        </div>
+    {% else %}
+        <div style="text-align: center;">
+            <h1>Login/Registration System!</h1>
+        </div>
+    {% endif %}
+    <br>
+    <div class="center">
+        {% if user.is_authenticated %}
+            <center><a class="a2" href="{% url 'logout' %} ">Logout</a></center>
+        {% else %}
+            <center>
+                <a class="a1" href="{% url  'register' %}">Sign Up</a><br>
+                <a class="a2" href="{% url 'login' %}">Login</a>
+            </center>
+            
+        {% endif %}
+    </div>
+{% endblock content %}

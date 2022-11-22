@@ -1,0 +1,17 @@
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for message in messages %}
+        <strong>Message:</strong> {{ message }}
+    {% endfor %}
+    <label for="title"> :: Enter Your Title Below ::</label><br>
+    <input type="text" id="id_title" name="title" rows="4" cols="50" value="{{post.title}}"/><br><br>
+    {% if post.image %}
+        <img src="{{post.image.url}}" alt="Post Image" width="500" height="333"/><br/>
+    {% endif %}
+    <label for="image"> :: Update Image here ::</label><br>
+    <input type="file" name="image" id="id_image"><br><br><br>
+    
+    <label for="post"> :: Enter Your Post Below :: </label><br>
+    <textarea id="id_post" name="post" rows="4" cols="50">{{post.post}}</textarea><br><br>
+    <input type="submit" value="Submit">
+</form>
